@@ -1297,42 +1297,42 @@ def eb_all_delete():
             spisok_eps.append(int(i[3]))
         j=len(eps_br)
         js=[]
-        if eb_ALL_delete==1:
+        #if eb_ALL_delete==1:
 
-            for ii in range(1,201) :
-                #if j-1 != 0:
-                if ii  in spisok_eps :
-                    #j=j-1
-                    try:
-                        stopped_bufer=False
-                        stopped_msg_mac=''
-                        json_out={
-                        "params":{
-                        "eb":[{
-                        "id":int(ii)
-                        }]
-                        }
-                        }
-                        json_out2=json.dumps(json_out)
-                        #print('do do rr=',json_out2)
+        for ii in range(1,201) :
+            #if j-1 != 0:
+            if ii  in spisok_eps :
+                #j=j-1
+                try:
+                    stopped_bufer=False
+                    stopped_msg_mac=''
+                    json_out={
+                    "params":{
+                    "eb":[{
+                    "id":int(ii)
+                    }]
+                    }
+                    }
+                    json_out2=json.dumps(json_out)
+                    #print('do do rr=',json_out2)
 
-                        rr=  req.delete(f'http://{udras}/params/eb',json=(json_out))
+                    rr=  req.delete(f'http://{udras}/params/eb',json=(json_out))
 
-                        js = json.loads(rr.text)
-                        eb_ALL_delete=0
-                        #print('delete outrr=',js)
-                        #print('js=',js)
-                        #if js['response']['code'] == 0 :
-                            #return redirect(url_for('LIST_EPS'))
-                        #else:
-                            #return redirect(url_for('LIST_EPS'))
+                    js = json.loads(rr.text)
+                    eb_ALL_delete=0
+                    #print('delete outrr=',js)
+                    #print('js=',js)
+                    #if js['response']['code'] == 0 :
+                        #return redirect(url_for('LIST_EPS'))
+                    #else:
+                        #return redirect(url_for('LIST_EPS'))
 
-                    except Exception as ex:
-                        eb_ALL_delete=0
+                except Exception as ex:
+                    eb_ALL_delete=0
 
-                        #return  render_template('first.html')
+                    #return  render_template('first.html')
 
-                        return redirect(url_for('LIST_EPS'))
+                    return redirect(url_for('LIST_EPS'))
 
                     #return redirect(url_for("delete_eb",number=int(ii)))
 
@@ -1487,221 +1487,221 @@ def eb_all_add():
 
         j=0
 
-        if add_eps_buferss==1:
-            for ii in range(1,201) :
+        #if add_eps_buferss==1:
+        for ii in range(1,201) :
 
-                if ii not in spisok_eps :
-                    #print('\n zachodit i=',ii)
-                    j=j+1
-                    if network_numb == 0 and scenar_numb == 0:
-
-
-                        scenar_izmen=[]
-
-                        #vr_summ=0 #pcap_cortg[i-1][1]
-                        scenar_izmen=[]
-                        for it in spisok_scenariev[scenar_numb][2] :
-                            scenar_izmen.append(int(it))
-
-                        vr_summ=0
-                        for i in scenar_izmen:
-                            #print(pcap_cortg[i-1])
-                            vr_summ=vr_summ+pcap_cortg[i-1][1]
-                        vrsumm_33=vrsumm_33+vr_summ
-
-                        json_out={
-                        "params":{
-                        "eb": [{
-                        "id":ii,
-                        "br":int(vr_summ),
-                        "user_scenario":{
-                        "id": 0,
-                        "name": "Custom",
-                        "br": int(vr_summ),
-                        "pcap_id":spisok_scenariev[scenar_numb][2]
-                        }, "network_scenario":{
-                        "id": 0,
-                        "name": "Custom",
-                        "jitter" :{
-                        "timeup":network_list[network_numb][1]['timeup'],
-                        "timedown":network_list[network_numb][1]['timedown'],
-                        "value":network_list[network_numb][1]['value']
-                        },
-                        "burst": {
-                        "timeup":network_list[network_numb][2]['timeup'],
-                        "timedown":network_list[network_numb][2]['timedown']
-                        }
-                        }
-                        }]
-                        }
-                        }
-                        try :
-
-                            rr= req.post(f'http://{udras}/params/eb',json=(json_out))
-                            js = json.loads(rr.text)
-                            add_eps_buferss=0
-
-                            error_flag_add_eps=False
+            if ii not in spisok_eps :
+                #print('\n zachodit i=',ii)
+                j=j+1
+                if network_numb == 0 and scenar_numb == 0:
 
 
-                        except Exception as ex:
-                            return  render_template('first.html')
+                    scenar_izmen=[]
+
+                    #vr_summ=0 #pcap_cortg[i-1][1]
+                    scenar_izmen=[]
+                    for it in spisok_scenariev[scenar_numb][2] :
+                        scenar_izmen.append(int(it))
+
+                    vr_summ=0
+                    for i in scenar_izmen:
+                        #print(pcap_cortg[i-1])
+                        vr_summ=vr_summ+pcap_cortg[i-1][1]
+                    vrsumm_33=vrsumm_33+vr_summ
+
+                    json_out={
+                    "params":{
+                    "eb": [{
+                    "id":ii,
+                    "br":int(vr_summ),
+                    "user_scenario":{
+                    "id": 0,
+                    "name": "Custom",
+                    "br": int(vr_summ),
+                    "pcap_id":spisok_scenariev[scenar_numb][2]
+                    }, "network_scenario":{
+                    "id": 0,
+                    "name": "Custom",
+                    "jitter" :{
+                    "timeup":network_list[network_numb][1]['timeup'],
+                    "timedown":network_list[network_numb][1]['timedown'],
+                    "value":network_list[network_numb][1]['value']
+                    },
+                    "burst": {
+                    "timeup":network_list[network_numb][2]['timeup'],
+                    "timedown":network_list[network_numb][2]['timedown']
+                    }
+                    }
+                    }]
+                    }
+                    }
+                    try :
+
+                        rr= req.post(f'http://{udras}/params/eb',json=(json_out))
+                        js = json.loads(rr.text)
+                        add_eps_buferss=0
+
+                        error_flag_add_eps=False
 
 
-                    if network_numb == 0 and scenar_numb != 0:
-
-                        #new_id=int(eps_br[out][3])+i
-                        vr_summ1=spisok_scenariev[scenar_numb][0]
-                        scenar_izmen=[]
+                    except Exception as ex:
+                        return  render_template('first.html')
 
 
-                        #vr_summ=0 #pcap_cortg[i-1][1]
-                        scenar_izmen=[]
-                        for it in spisok_scenariev[scenar_numb][2] :
-                            scenar_izmen.append(int(it))
+                if network_numb == 0 and scenar_numb != 0:
 
-                        vr_summ=0
-                        for i in scenar_izmen:
-                            #print(pcap_cortg[i-1])
-                            vr_summ=vr_summ+pcap_cortg[i-1][1]
-                        vrsumm_33=vrsumm_33+vr_summ
-                        json_out={
-                        "params":{
-                        "eb": [{
-                        "id":ii,
-                        "br":int(vr_summ),
-                        "user_scenario":{
-                        "id": spisok_scenariev[scenar_numb][0]
-
-                        }, "network_scenario":{
-                        "id": 0,
-                        "name": "Custom",
-                        "jitter" :{
-                        "timeup":network_list[network_numb][1]['timeup'],
-                        "timedown":network_list[network_numb][1]['timedown'],
-                        "value":network_list[network_numb][1]['value']
-                        },
-                        "burst": {
-                        "timeup":network_list[network_numb][2]['timeup'],
-                        "timedown":network_list[network_numb][2]['timedown']
-                        }
-                        }
-                        }]
-                        }
-                        }
-
-                        try :
-                            rr=  req.post(f'http://{udras}/params/eb',json=(json_out))
-                            js = json.loads(rr.text)
-                            error_flag_add_eps=False
-                            add_eps_buferss=0
+                    #new_id=int(eps_br[out][3])+i
+                    vr_summ1=spisok_scenariev[scenar_numb][0]
+                    scenar_izmen=[]
 
 
+                    #vr_summ=0 #pcap_cortg[i-1][1]
+                    scenar_izmen=[]
+                    for it in spisok_scenariev[scenar_numb][2] :
+                        scenar_izmen.append(int(it))
 
-                        except Exception as ex:
-                            return  render_template('first.html')
+                    vr_summ=0
+                    for i in scenar_izmen:
+                        #print(pcap_cortg[i-1])
+                        vr_summ=vr_summ+pcap_cortg[i-1][1]
+                    vrsumm_33=vrsumm_33+vr_summ
+                    json_out={
+                    "params":{
+                    "eb": [{
+                    "id":ii,
+                    "br":int(vr_summ),
+                    "user_scenario":{
+                    "id": spisok_scenariev[scenar_numb][0]
 
-                    if network_numb != 0 and scenar_numb != 0:
+                    }, "network_scenario":{
+                    "id": 0,
+                    "name": "Custom",
+                    "jitter" :{
+                    "timeup":network_list[network_numb][1]['timeup'],
+                    "timedown":network_list[network_numb][1]['timedown'],
+                    "value":network_list[network_numb][1]['value']
+                    },
+                    "burst": {
+                    "timeup":network_list[network_numb][2]['timeup'],
+                    "timedown":network_list[network_numb][2]['timedown']
+                    }
+                    }
+                    }]
+                    }
+                    }
 
-                        #new_id=int(eps_br[out][3])+i
-                        vr_summ1=spisok_scenariev[scenar_numb][0]
-                        scenar_izmen=[]
-
-
-                        #vr_summ=0 #pcap_cortg[i-1][1]
-                        scenar_izmen=[]
-                        for it in spisok_scenariev[scenar_numb][2] :
-                            scenar_izmen.append(int(it))
-
-                        vr_summ=0
-                        for i in scenar_izmen:
-                            #print(pcap_cortg[i-1])
-                            vr_summ=vr_summ+pcap_cortg[i-1][1]
-                        vrsumm_33=vrsumm_33+vr_summ
-                        json_out={
-                        "params":{
-                        "eb": [{
-                        "id":ii,
-                        "br":int(vr_summ),
-                        "user_scenario":{
-                        "id": spisok_scenariev[scenar_numb][0]
-
-                        }, "network_scenario":{
-                        "id": network_list[network_numb][3]
-                        }
-
-                        }]
-                        }
-                        }
-                        try :
-                            rr=  req.post(f'http://{udras}/params/eb',json=(json_out))
-                            js = json.loads(rr.text)
-                            error_flag_add_eps=False
-                            add_eps_buferss=0
-
-
-                        except Exception as ex:
-                            return  render_template('first.html')
-
-                    if network_numb != 0 and scenar_numb == 0:
-
-                        #new_id=int(eps_br[out][3])+i
-                        vr_summ1=spisok_scenariev[scenar_numb][0]
-                        scenar_izmen=[]
-
-
-                        #vr_summ=0 #pcap_cortg[i-1][1]
-                        scenar_izmen=[]
-                        for it in spisok_scenariev[scenar_numb][2] :
-                            scenar_izmen.append(int(it))
-
-                        vr_summ=0
-                        for i in scenar_izmen:
-                            #print(pcap_cortg[i-1])
-                            vr_summ=vr_summ+pcap_cortg[i-1][1]
-                        vrsumm_33=vrsumm_33+vr_summ
-                        json_out={
-                        "params":{
-                        "eb": [{
-                        "id":ii,
-                        "br":int(vr_summ),
-                        "user_scenario":{
-                        "id": 0,
-                        "name": "Custom",
-                        "br": int(vr_summ),
-                        "pcap_id":spisok_scenariev[scenar_numb][2]
-                        }, "network_scenario":{
-                        "id": network_list[network_numb][3]
-                        }
-
-                        }]
-                        }
-                        }
+                    try :
+                        rr=  req.post(f'http://{udras}/params/eb',json=(json_out))
+                        js = json.loads(rr.text)
+                        error_flag_add_eps=False
+                        add_eps_buferss=0
 
 
 
+                    except Exception as ex:
+                        return  render_template('first.html')
 
-                        try :
+                if network_numb != 0 and scenar_numb != 0:
+
+                    #new_id=int(eps_br[out][3])+i
+                    vr_summ1=spisok_scenariev[scenar_numb][0]
+                    scenar_izmen=[]
 
 
-                            rr=  req.post(f'http://{udras}/params/eb',json=(json_out))
-                            js = json.loads(rr.text)
+                    #vr_summ=0 #pcap_cortg[i-1][1]
+                    scenar_izmen=[]
+                    for it in spisok_scenariev[scenar_numb][2] :
+                        scenar_izmen.append(int(it))
 
-                            error_flag_add_eps=False
-                            add_eps_buferss=0
+                    vr_summ=0
+                    for i in scenar_izmen:
+                        #print(pcap_cortg[i-1])
+                        vr_summ=vr_summ+pcap_cortg[i-1][1]
+                    vrsumm_33=vrsumm_33+vr_summ
+                    json_out={
+                    "params":{
+                    "eb": [{
+                    "id":ii,
+                    "br":int(vr_summ),
+                    "user_scenario":{
+                    "id": spisok_scenariev[scenar_numb][0]
 
-                        except Exception as ex:
-                            return  render_template('first.html')
-                if j == col :
-                    break
+                    }, "network_scenario":{
+                    "id": network_list[network_numb][3]
+                    }
 
-            if js['response']['code'] == 0 :
-                add_eps_buferss=0
+                    }]
+                    }
+                    }
+                    try :
+                        rr=  req.post(f'http://{udras}/params/eb',json=(json_out))
+                        js = json.loads(rr.text)
+                        error_flag_add_eps=False
+                        add_eps_buferss=0
 
-                return redirect(url_for('LIST_EPS'))
-            else:
-                add_eps_buferss=0
-                return redirect(url_for('LIST_EPS'))
+
+                    except Exception as ex:
+                        return  render_template('first.html')
+
+                if network_numb != 0 and scenar_numb == 0:
+
+                    #new_id=int(eps_br[out][3])+i
+                    vr_summ1=spisok_scenariev[scenar_numb][0]
+                    scenar_izmen=[]
+
+
+                    #vr_summ=0 #pcap_cortg[i-1][1]
+                    scenar_izmen=[]
+                    for it in spisok_scenariev[scenar_numb][2] :
+                        scenar_izmen.append(int(it))
+
+                    vr_summ=0
+                    for i in scenar_izmen:
+                        #print(pcap_cortg[i-1])
+                        vr_summ=vr_summ+pcap_cortg[i-1][1]
+                    vrsumm_33=vrsumm_33+vr_summ
+                    json_out={
+                    "params":{
+                    "eb": [{
+                    "id":ii,
+                    "br":int(vr_summ),
+                    "user_scenario":{
+                    "id": 0,
+                    "name": "Custom",
+                    "br": int(vr_summ),
+                    "pcap_id":spisok_scenariev[scenar_numb][2]
+                    }, "network_scenario":{
+                    "id": network_list[network_numb][3]
+                    }
+
+                    }]
+                    }
+                    }
+
+
+
+
+                    try :
+
+
+                        rr=  req.post(f'http://{udras}/params/eb',json=(json_out))
+                        js = json.loads(rr.text)
+
+                        error_flag_add_eps=False
+                        add_eps_buferss=0
+
+                    except Exception as ex:
+                        return  render_template('first.html')
+            if j == col :
+                break
+
+        if js['response']['code'] == 0 :
+            add_eps_buferss=0
+
+            return redirect(url_for('LIST_EPS'))
+        else:
+            add_eps_buferss=0
+            return redirect(url_for('LIST_EPS'))
 
 @app.route('/eb/add', methods=[ 'POST'])
 def eb_add():
@@ -3028,38 +3028,38 @@ def network_change():
 
 
         name=network_list[bufer_network][0]
-        if eps_network_buferss==1:
-            if id_change != 0 :
-                json_out={
-                "params":{
-                "network_scenario":[{
-                "id": id_change,
-                "name": name,
-                "jitter" :{
-                "timeup":timeup_jitter,
-                "timedown":timedown_jitter,
-                "value":value_jitter
-                },
-                "burst": {
-                "timeup":timeup_burst,
-                "timedown":timedown_burst
-                }
-                }]
-                }
-                }
-                rr=req.put(f'http://{udras}/params/network_scenario',json=(json_out))
+        #if eps_network_buferss==1:
+        if id_change != 0 :
+            json_out={
+            "params":{
+            "network_scenario":[{
+            "id": id_change,
+            "name": name,
+            "jitter" :{
+            "timeup":timeup_jitter,
+            "timedown":timedown_jitter,
+            "value":value_jitter
+            },
+            "burst": {
+            "timeup":timeup_burst,
+            "timedown":timedown_burst
+            }
+            }]
+            }
+            }
+            rr=req.put(f'http://{udras}/params/network_scenario',json=(json_out))
 
 
-                js = json.loads(rr.text)
-                eps_network_buferss=0
+            js = json.loads(rr.text)
+            eps_network_buferss=0
 
-                if js['response']['code'] == 0 :
-                    return redirect(url_for('network_spis'))
-                else:
-                    return redirect(url_for('network_spis'))
-            else:
-                network_list[id_change]=['Custom',{'timedown': timedown_jitter, 'timeup': timeup_jitter, 'value': value_jitter},{'timedown': timedown_burst, 'timeup': timeup_burst},network_list[bufer_network][3]]
+            if js['response']['code'] == 0 :
                 return redirect(url_for('network_spis'))
+            else:
+                return redirect(url_for('network_spis'))
+        else:
+            network_list[id_change]=['Custom',{'timedown': timedown_jitter, 'timeup': timeup_jitter, 'value': value_jitter},{'timedown': timedown_burst, 'timeup': timeup_burst},network_list[bufer_network][3]]
+            return redirect(url_for('network_spis'))
 
     #pass
 @app.route('/eps/network/<int:number>', methods=[ 'POST','GET'])
@@ -3216,196 +3216,196 @@ def LIST_EPS():
         LIST_EPS_flagss=LIST_EPS_flagss+1
         if conect ==False:
             return redirect(url_for('gra'))
-        if LIST_EPS_flagss==1:
-            try:
-                ind_sce_0_iter=0
-                conect=True
-                start=time()*1000
-                rr=  req.get(f'http://{udras}/params/eb')
-                LIST_EPS_flagss=0
-                stop=int(time()*1000-start)
-                time_otvet=stop*1
-                #GET(/params/eb/1?id=)
-                buferr=rr.text
-                js = json.loads(buferr)
+        #if LIST_EPS_flagss==1:
+        try:
+            ind_sce_0_iter=0
+            conect=True
+            start=time()*1000
+            rr=  req.get(f'http://{udras}/params/eb')
+            LIST_EPS_flagss=0
+            stop=int(time()*1000-start)
+            time_otvet=stop*1
+            #GET(/params/eb/1?id=)
+            buferr=rr.text
+            js = json.loads(buferr)
 
-                print('\n 23js=',js)
+            print('\n 23js=',js)
 
-                if js['response']['code'] == 0 :
-                    eps_br=[]
-                    js2=js['params']['eb']
-                    global_number_eps=len(js2)
-                    #print('\n js2=',js2)
-                    for it in js2:
-                        bufer=[]
-                        #print(it)
-                        bufer.append(it['br'])
-                        bufer.append(it['user_scenario'])
-                        bufer.append(it['network_scenario'])
-                        bufer.append(it['id'])
-                        lister=[]
-                        lister2=[]
+            if js['response']['code'] == 0 :
+                eps_br=[]
+                js2=js['params']['eb']
+                global_number_eps=len(js2)
+                #print('\n js2=',js2)
+                for it in js2:
+                    bufer=[]
+                    #print(it)
+                    bufer.append(it['br'])
+                    bufer.append(it['user_scenario'])
+                    bufer.append(it['network_scenario'])
+                    bufer.append(it['id'])
+                    lister=[]
+                    lister2=[]
 
-                        if it['user_scenario']['id']!=0 :
+                    if it['user_scenario']['id']!=0 :
 
-                            for it2 in range(len(spisok_scenariev)) :
-                                #print('\nit2=',it2)
-                                if int(spisok_scenariev[it2][0])   == it['user_scenario']['id']:
-                                    #print('\n raborasd')
-                                    #print('\n 23it=',it2)
+                        for it2 in range(len(spisok_scenariev)) :
+                            #print('\nit2=',it2)
+                            if int(spisok_scenariev[it2][0])   == it['user_scenario']['id']:
+                                #print('\n raborasd')
+                                #print('\n 23it=',it2)
 
-                                    #promeg={'id':int(spisok_scenariev[it2][0])}
-                                    promeg= deepcopy(spisok_scenariev[it2])
-                                    #print('\n \n promeg=',id(promeg))
-                                    lister.append((promeg))
-                                    #lister= (promeg).copy()
-                        else:
-                            promeg={'id':it['user_scenario']['id'],'name':it['user_scenario']['name'] ,'pcap_id':it['user_scenario']['pcap_id'] ,'br':it['user_scenario']['br']}
-                            bder=1
-
-                            lister=deepcopy(it)
-
-                        bufer.append(lister)
-
-                        if it['network_scenario']['id']!=0 :
-
-                            for it2 in network_list :
-                                if  int(it['network_scenario']['id']) == int(it2[3]):
-                                    promeg=deepcopy(it2)
-                                    lister2 =deepcopy(promeg)
-                                    #lister2=promeg
-                        else:
-                            promeg=deepcopy(it['network_scenario'])
-                            lister2 = deepcopy(promeg)
-                            #lister2= promeg
-                            #pass
-                        bufer.append(lister2)
-
-                        eps_br.append(bufer)
-                print('eps_br=',eps_br)
-                print('spisok_scenariev=',spisok_scenariev)
-                min=len(eps_br)
-                g=0
-                out_pcap_spis=[]
-                for it in pcap_cortg:
-                    #bufer_str=''
-                    g=g+1
-                    out_pcap_spis.append({'key':g,'video':it[0],'br_v':it[1],'path':it[2]})
-
-                buferr=[]
-                i=0
-                summer_velocity2=0
-
-                for it in eps_br:
-                    summer_velocity2=summer_velocity2+int(it[0])
-
-
-                summer_velocity=0
-                for it in eps_br:
-                    i=i+1
-                    print('\n it=',it)
-                    if int(it[1]['id']) == 0 :
-                        buferr_summ=0
-
-
-                        for iter in spisok_scenariev :
-                            if int(iter[0]) == int(it[1]['id']) :
-
-                                for ler in iter[2] :
-                                    for it34 in out_pcap_spis:
-                                        if int(it34['key']) == int(ler) :
-                                            buferr_summ=buferr_summ+it34['br_v']
-                        if  buferr_summ == it[0] :
-
-                            summer_velocity=summer_velocity+buferr_summ
-                            print('\n \n buferr_summ=',buferr_summ)
-                            buferr.append({'key':i,'veloc':int(it[0]),'status':it[1]['id'],'status_nt':it[2]['id'],'global_numb':it[3]})
-
-                        else:
-                            summer_velocity=summer_velocity+it[0]
-                            buferr.append({'key':i,'veloc':int(it[0]),'status':it[1]['id'],'status_nt':it[2]['id'],'global_numb':it[3]})
+                                #promeg={'id':int(spisok_scenariev[it2][0])}
+                                promeg= deepcopy(spisok_scenariev[it2])
+                                #print('\n \n promeg=',id(promeg))
+                                lister.append((promeg))
+                                #lister= (promeg).copy()
                     else:
-                        buferr_summ=0
+                        promeg={'id':it['user_scenario']['id'],'name':it['user_scenario']['name'] ,'pcap_id':it['user_scenario']['pcap_id'] ,'br':it['user_scenario']['br']}
+                        bder=1
 
-                        for iter in spisok_scenariev :
-                            if int(iter[0]) == int(it[1]['id']) :
+                        lister=deepcopy(it)
 
-                                for ler in iter[2] :
-                                    for it34 in out_pcap_spis:
-                                        if int(it34['key']) == int(ler) :
-                                            buferr_summ=buferr_summ+it34['br_v']
+                    bufer.append(lister)
+
+                    if it['network_scenario']['id']!=0 :
+
+                        for it2 in network_list :
+                            if  int(it['network_scenario']['id']) == int(it2[3]):
+                                promeg=deepcopy(it2)
+                                lister2 =deepcopy(promeg)
+                                #lister2=promeg
+                    else:
+                        promeg=deepcopy(it['network_scenario'])
+                        lister2 = deepcopy(promeg)
+                        #lister2= promeg
+                        #pass
+                    bufer.append(lister2)
+
+                    eps_br.append(bufer)
+            print('eps_br=',eps_br)
+            print('spisok_scenariev=',spisok_scenariev)
+            min=len(eps_br)
+            g=0
+            out_pcap_spis=[]
+            for it in pcap_cortg:
+                #bufer_str=''
+                g=g+1
+                out_pcap_spis.append({'key':g,'video':it[0],'br_v':it[1],'path':it[2]})
+
+            buferr=[]
+            i=0
+            summer_velocity2=0
+
+            for it in eps_br:
+                summer_velocity2=summer_velocity2+int(it[0])
+
+
+            summer_velocity=0
+            for it in eps_br:
+                i=i+1
+                print('\n it=',it)
+                if int(it[1]['id']) == 0 :
+                    buferr_summ=0
+
+
+                    for iter in spisok_scenariev :
+                        if int(iter[0]) == int(it[1]['id']) :
+
+                            for ler in iter[2] :
+                                for it34 in out_pcap_spis:
+                                    if int(it34['key']) == int(ler) :
+                                        buferr_summ=buferr_summ+it34['br_v']
+                    if  buferr_summ == it[0] :
 
                         summer_velocity=summer_velocity+buferr_summ
+                        print('\n \n buferr_summ=',buferr_summ)
                         buferr.append({'key':i,'veloc':int(it[0]),'status':it[1]['id'],'status_nt':it[2]['id'],'global_numb':it[3]})
 
-
-
-                        #pass
-
-                    #buferr.append({'key':i,'veloc':it[0],'status':it[1]['id'],'status_nt':it[2]['id'],'global_numb':it[3]})
-                max=200-i
-                #print('SCENAR=',spisok_scenariev)
-                scenar_lister=[]
-                #scenar_lister.append({'name':'Custom','indef':0})
-                bufer_network=[]
-                #bufer_network.append({'name':'Custom','indef':0})
-
-                g=0
-                #print('spisok_scenariev=',spisok_scenariev)
-                for i in spisok_scenariev:
-                    scenar_lister.append({'name':i[1],'indef':g,'indef_ir':i[0]})
-                    g=g+1
-
-                g=0
-                #print('network_list=',network_list)
-
-                for i in network_list:
-                    bufer_network.append({'name':i[0],'indef':g,'der':i[3]})
-                    g=g+1
-
-                start_flag=False
-
-                if start_flag1%2 == 0:
-                    start_flag=True    #bool(5)#"true" #True возможно наборот
+                    else:
+                        summer_velocity=summer_velocity+it[0]
+                        buferr.append({'key':i,'veloc':int(it[0]),'status':it[1]['id'],'status_nt':it[2]['id'],'global_numb':it[3]})
                 else:
-                    start_flag=  False #bool(0)#"false" #False
-                #print('summer_velocity=',summer_velocity)
+                    buferr_summ=0
 
-                iter_nacha=[1]
-                #print('\n do do eps_br=',eps_br)
-                #print('\n do do leneps_br=',len(eps_br))
-                # for it in eps_br: scenar
-                # it[1]['id']
+                    for iter in spisok_scenariev :
+                        if int(iter[0]) == int(it[1]['id']) :
 
-                # for it in eps_br: network
-                # it[2]['id']
+                            for ler in iter[2] :
+                                for it34 in out_pcap_spis:
+                                    if int(it34['key']) == int(ler) :
+                                        buferr_summ=buferr_summ+it34['br_v']
+
+                    summer_velocity=summer_velocity+buferr_summ
+                    buferr.append({'key':i,'veloc':int(it[0]),'status':it[1]['id'],'status_nt':it[2]['id'],'global_numb':it[3]})
 
 
-                return  render_template('epb_table.html',iter_nacha=iter_nacha,lang_bool=lang_bool,conect=conect,punkt_menu=punkt_menu,summer_velocity=summer_velocity,
-                start_flag=start_flag,buferr=buferr,
-                scenar_lister=scenar_lister,bufer_network=bufer_network,time_otvet=time_otvet,string=string , bufer_scenar_1=bufer_scenar_1,bufer_network_1=bufer_network_1,stopped_msg_mac=stopped_msg_mac,stopped_bufer=stopped_bufer,max_dop=max,error_flag_add_eps=error_flag_add_eps,min_eps=min,summer_velocity2=global_velocity)
-                pass
 
-            except Exception as ex:
-                time_otvet=0
-                bufer_network=[]
-                summer_velocity=[]
-                buferr=[]
-                scenar_lister=[]
-                conect = False
-                start_flag=False
-                max=200
-                min=0
-                summer_velocity2=0
+                    #pass
 
-                if start_flag1%2 == 0:
-                    start_flag=True    #bool(5)#"true" #True возможно наборот
-                else:
-                    start_flag=  False #bool(0)#"false" #False
-                return  render_template('epb_table.html',lang_bool=lang_bool
-                ,conect=conect,punkt_menu=punkt_menu,summer_velocity=summer_velocity,
-                start_flag=start_flag,buferr=buferr,
-                scenar_lister=scenar_lister,bufer_network=bufer_network,time_otvet=time_otvet,string=string, bufer_scenar_1=bufer_scenar_1,bufer_network_1=bufer_network_1,stopped_msg_mac=stopped_msg_mac,stopped_bufer=stopped_bufer,max_dop=max,error_flag_add_eps=error_flag_add_eps,min_eps=min,summer_velocity2=global_velocity)
+                #buferr.append({'key':i,'veloc':it[0],'status':it[1]['id'],'status_nt':it[2]['id'],'global_numb':it[3]})
+            max=200-i
+            #print('SCENAR=',spisok_scenariev)
+            scenar_lister=[]
+            #scenar_lister.append({'name':'Custom','indef':0})
+            bufer_network=[]
+            #bufer_network.append({'name':'Custom','indef':0})
+
+            g=0
+            #print('spisok_scenariev=',spisok_scenariev)
+            for i in spisok_scenariev:
+                scenar_lister.append({'name':i[1],'indef':g,'indef_ir':i[0]})
+                g=g+1
+
+            g=0
+            #print('network_list=',network_list)
+
+            for i in network_list:
+                bufer_network.append({'name':i[0],'indef':g,'der':i[3]})
+                g=g+1
+
+            start_flag=False
+
+            if start_flag1%2 == 0:
+                start_flag=True    #bool(5)#"true" #True возможно наборот
+            else:
+                start_flag=  False #bool(0)#"false" #False
+            #print('summer_velocity=',summer_velocity)
+
+            iter_nacha=[1]
+            #print('\n do do eps_br=',eps_br)
+            #print('\n do do leneps_br=',len(eps_br))
+            # for it in eps_br: scenar
+            # it[1]['id']
+
+            # for it in eps_br: network
+            # it[2]['id']
+
+
+            return  render_template('epb_table.html',iter_nacha=iter_nacha,lang_bool=lang_bool,conect=conect,punkt_menu=punkt_menu,summer_velocity=summer_velocity,
+            start_flag=start_flag,buferr=buferr,
+            scenar_lister=scenar_lister,bufer_network=bufer_network,time_otvet=time_otvet,string=string , bufer_scenar_1=bufer_scenar_1,bufer_network_1=bufer_network_1,stopped_msg_mac=stopped_msg_mac,stopped_bufer=stopped_bufer,max_dop=max,error_flag_add_eps=error_flag_add_eps,min_eps=min,summer_velocity2=global_velocity)
+            pass
+
+        except Exception as ex:
+            time_otvet=0
+            bufer_network=[]
+            summer_velocity=[]
+            buferr=[]
+            scenar_lister=[]
+            conect = False
+            start_flag=False
+            max=200
+            min=0
+            summer_velocity2=0
+
+            if start_flag1%2 == 0:
+                start_flag=True    #bool(5)#"true" #True возможно наборот
+            else:
+                start_flag=  False #bool(0)#"false" #False
+            return  render_template('epb_table.html',lang_bool=lang_bool
+            ,conect=conect,punkt_menu=punkt_menu,summer_velocity=summer_velocity,
+            start_flag=start_flag,buferr=buferr,
+            scenar_lister=scenar_lister,bufer_network=bufer_network,time_otvet=time_otvet,string=string, bufer_scenar_1=bufer_scenar_1,bufer_network_1=bufer_network_1,stopped_msg_mac=stopped_msg_mac,stopped_bufer=stopped_bufer,max_dop=max,error_flag_add_eps=error_flag_add_eps,min_eps=min,summer_velocity2=global_velocity)
 
 
 @app.route('/start', methods=[ 'POST'])
@@ -4065,22 +4065,22 @@ def scenar_add():
         }]
         }
         }
-        if scenar_add==1:
-            try :
-                stopped_bufer=False
-                stopped_msg_mac=''
-                print('do do \n json_out=',json_out)
-                rr=req.post(f'http://{udras}/params/user_scenario',json=(json_out))
-                js = json.loads(rr.text)
-                scenar_add=0
+        #if scenar_add==1:
+        try :
+            stopped_bufer=False
+            stopped_msg_mac=''
+            print('do do \n json_out=',json_out)
+            rr=req.post(f'http://{udras}/params/user_scenario',json=(json_out))
+            js = json.loads(rr.text)
+            scenar_add=0
 
-                if js['response']['code'] == 0 :
-                    return redirect(url_for('scenar_spis'))
-                else:
-                    return redirect(url_for('scenar_spis'))
-            except Exception as ex:
-                scenar_add=0
-                return  render_template('first.html')
+            if js['response']['code'] == 0 :
+                return redirect(url_for('scenar_spis'))
+            else:
+                return redirect(url_for('scenar_spis'))
+        except Exception as ex:
+            scenar_add=0
+            return  render_template('first.html')
 
         #print('scenar',spisok_scenariev[int_sceanar[0]-1])
         #pass
@@ -4637,103 +4637,42 @@ def data(number):
             rr=  req.get(f'http://{udras}/alive')
             conect=True
             if conect or start_flag :
-                if data_flagss==1:
+                #if data_flagss==1:
 
-                    if number == 0 :
-                            print('\n rabb')
-                            print('\n \n  /data/0')
-
-
-
-                            try:
-                                #rr=req.put(f'http://{udras}/params/eb',json=(json_out))
-
-                                start = time()*1000
-
-                                rr =  req.get(f'http://{udras}/stats/eb')
-                                js = json.loads(rr.text)
-                                data_flagss=0
-                                #print('\n \n!!!234 js=',js)
-                                stop = int(time()*1000-start)
-                                time_otvet = stop
-
-                                eps_biar_graph = rr.text #.decode('utf-8')
-                                data_flagss=0
+                if number == 0 :
+                        print('\n rabb')
+                        print('\n \n  /data/0')
 
 
-
-                                json_poputka = json.loads(eps_biar_graph)
-
-                                if js['response']['code'] == 0 :
-                                    print('\n 4js=',js)
-
-
-
-                                    timer = str(datetime.fromisoformat(json_poputka['stats']['time'])) #random.randint(100,200000)
-                                    data=[timer,int(json_poputka['stats']['size']),int(json_poputka['stats']['vpercent']),(time_otvet)]
-                                    global_data=data
-                                    #data={'time':timer,'value':int(json_poputka['stats']['size'])}
-                                    json_data = json.dumps(data)
-
-                                    response = make_response(json_data)
-
-                                    response.content_type = 'application/json'
-
-                                    return response
-                            except Exception as ex:
-                                print('\n /data/0=',repr(ex))
-                                fe=repr(ex)
-                                data_flagss=0
-
-
-
-                                if 'Internal Server Error' in fe:
-                                    #json_data="God"
-                                    response = make_response(json_data)
-                                    #data=["God",2]
-
-                                    json_data = json.dumps(global_data)
-
-                                    response = make_response(json_data)
-
-                                    response.content_type = 'application/json'
-                                    return response
-
-
-
-
-                                #conect = False
-                                return  render_template('first.html')
-                                    #else:
-
-
-                    else:
 
                         try:
-                            print('\n \n  /data/23')
+                            #rr=req.put(f'http://{udras}/params/eb',json=(json_out))
 
                             start = time()*1000
-                            rr = req.get(f'http://{udras}/stats/eb/{number}')
 
+                            rr =  req.get(f'http://{udras}/stats/eb')
                             js = json.loads(rr.text)
                             data_flagss=0
+                            #print('\n \n!!!234 js=',js)
                             stop = int(time()*1000-start)
-                            time_otvet = stop*1
+                            time_otvet = stop
 
                             eps_biar_graph = rr.text #.decode('utf-8')
                             data_flagss=0
 
 
 
-                            json_poputka=json.loads(eps_biar_graph)
+                            json_poputka = json.loads(eps_biar_graph)
 
                             if js['response']['code'] == 0 :
-                                #data_flagss=0
+                                print('\n 4js=',js)
 
 
-                                timer= str(datetime.fromisoformat(json_poputka['stats']['time'])) #random.randint(100,200000)
+
+                                timer = str(datetime.fromisoformat(json_poputka['stats']['time'])) #random.randint(100,200000)
                                 data=[timer,int(json_poputka['stats']['size']),int(json_poputka['stats']['vpercent']),(time_otvet)]
                                 global_data=data
+                                #data={'time':timer,'value':int(json_poputka['stats']['size'])}
                                 json_data = json.dumps(data)
 
                                 response = make_response(json_data)
@@ -4742,11 +4681,10 @@ def data(number):
 
                                 return response
                         except Exception as ex:
-                            #conect = False
-
-                            print('\n /data/number=',str(ex))
-                            fe=str(ex)
+                            print('\n /data/0=',repr(ex))
+                            fe=repr(ex)
                             data_flagss=0
+
 
 
                             if 'Internal Server Error' in fe:
@@ -4761,7 +4699,69 @@ def data(number):
                                 response.content_type = 'application/json'
                                 return response
 
+
+
+
+                            #conect = False
                             return  render_template('first.html')
+                                #else:
+
+
+                else:
+
+                    try:
+                        print('\n \n  /data/23')
+
+                        start = time()*1000
+                        rr = req.get(f'http://{udras}/stats/eb/{number}')
+
+                        js = json.loads(rr.text)
+                        data_flagss=0
+                        stop = int(time()*1000-start)
+                        time_otvet = stop*1
+
+                        eps_biar_graph = rr.text #.decode('utf-8')
+                        data_flagss=0
+
+
+
+                        json_poputka=json.loads(eps_biar_graph)
+
+                        if js['response']['code'] == 0 :
+                            #data_flagss=0
+
+
+                            timer= str(datetime.fromisoformat(json_poputka['stats']['time'])) #random.randint(100,200000)
+                            data=[timer,int(json_poputka['stats']['size']),int(json_poputka['stats']['vpercent']),(time_otvet)]
+                            global_data=data
+                            json_data = json.dumps(data)
+
+                            response = make_response(json_data)
+
+                            response.content_type = 'application/json'
+
+                            return response
+                    except Exception as ex:
+                        #conect = False
+
+                        print('\n /data/number=',str(ex))
+                        fe=str(ex)
+                        data_flagss=0
+
+
+                        if 'Internal Server Error' in fe:
+                            #json_data="God"
+                            response = make_response(json_data)
+                            #data=["God",2]
+
+                            json_data = json.dumps(global_data)
+
+                            response = make_response(json_data)
+
+                            response.content_type = 'application/json'
+                            return response
+
+                        return  render_template('first.html')
         except req.ConnectionError as ex:
                 print('\n dert ConnectionError')
 
