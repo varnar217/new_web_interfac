@@ -1,4 +1,4 @@
-operation mode real-time (sending into network),operation mode accumulation (file recording),Cannot be deleted because it is used, EPS-Bearer not created,cannot be deleted when the generator is running,Connect,Disconnect #выбор режима  
+operation mode real-time (sending into network),operation mode accumulation (file recording),Cannot be deleted because it is used, EPS-Bearer not created,cannot be deleted when the generator is running,Connect,Disconnect,loading #выбор режима  
 Start,Stop,Configuration,List of user scenarios,List of EPS-Bearers,List of network scenarios,Disconnect,Authorization,bitrate,video-ratio,ALL,Response time,apply,Megabytes #пункты первого экрана
 Back,Change,Operating mode,Maximum bitrate,GTP source address,GTP destination address,GTP TEID value range,Path of PCAP files to be saved,Max size of a PCAP file to be saved (Bytes),Disconnect,Authorization,used MAC src,MAC dst,incorrect MAC address,available,change MAC src,min,max #пункты меню 
 Scenario,Delete,Delete,Add scenario,Name,Close,Back,Disconnect,Authorization,Add #список сценариев

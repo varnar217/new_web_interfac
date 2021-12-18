@@ -4496,9 +4496,9 @@ def gra():
 
 
     punkt_menu_nach=[[bufer_menu_ALL_form_eng[1][0],bufer_menu_ALL_form_eng[1][1] ,bufer_menu_ALL_form_eng[1][2],bufer_menu_ALL_form_eng[1][3],bufer_menu_ALL_form_eng[1][4],bufer_menu_ALL_form_eng[1][5],bufer_menu_ALL_form_eng[1][6],bufer_menu_ALL_form_eng[1][7],str(bufer_menu_ALL_form_eng[1][8]),bufer_menu_ALL_form_eng[1][9],bufer_menu_ALL_form_eng[1][10],bufer_menu_ALL_form_eng[1][11],bufer_menu_ALL_form_eng[1][12]
-    ,bufer_menu_ALL_form_eng[1][13],bufer_menu_ALL_form_eng[0][5],bufer_menu_ALL_form_eng[0][6]],
+    ,bufer_menu_ALL_form_eng[1][13],bufer_menu_ALL_form_eng[0][5],bufer_menu_ALL_form_eng[0][6],bufer_menu_ALL_form_eng[0][7]],
     [bufer_menu_ALL_form_rus[1][0],bufer_menu_ALL_form_rus[1][1], bufer_menu_ALL_form_rus[1][2],bufer_menu_ALL_form_rus[1][3],bufer_menu_ALL_form_rus[1][4],bufer_menu_ALL_form_rus[1][5],bufer_menu_ALL_form_rus[1][6],bufer_menu_ALL_form_rus[1][7],str(bufer_menu_ALL_form_rus[1][8]),bufer_menu_ALL_form_rus[1][9],bufer_menu_ALL_form_rus[1][10],bufer_menu_ALL_form_rus[1][11],bufer_menu_ALL_form_rus[1][12]
-    ,bufer_menu_ALL_form_rus[1][13],bufer_menu_ALL_form_rus[0][5],bufer_menu_ALL_form_rus[0][6]]]
+    ,bufer_menu_ALL_form_rus[1][13],bufer_menu_ALL_form_rus[0][5],bufer_menu_ALL_form_rus[0][6],bufer_menu_ALL_form_rus[0][7]]]
     data=[]
     global_number_eps_1=global_number_eps+1
     rabota_status=0
