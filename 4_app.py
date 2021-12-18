@@ -773,28 +773,28 @@ def izmen1() :
             #print('json_2=',json_out)
             #req.put
             #print('json_out=',json_out)
-            if izmen1_flagss==1:
+            #if izmen1_flagss==1:
 
-                rr=req.put(f'http://{udras}/params/common',json=(json_out))
+            rr=req.put(f'http://{udras}/params/common',json=(json_out))
 
 
-                bufer_menu_change_MAC_SRC=0
-                #print('rr=',rr.text)
-                buferr=rr.text
+            bufer_menu_change_MAC_SRC=0
+            #print('rr=',rr.text)
+            buferr=rr.text
 
-                js = json.loads(buferr)
-                izmen1_flagss=0
-                #print('\n js=',js)
-                global pcap_cortg
-                mac_flag_error= False
-                if js['response']['code'] == 0 :
-                    global_velocity = int(js['params']['br'])
+            js = json.loads(buferr)
+            izmen1_flagss=0
+            #print('\n js=',js)
+            global pcap_cortg
+            mac_flag_error= False
+            if js['response']['code'] == 0 :
+                global_velocity = int(js['params']['br'])
 
-                    return redirect(url_for('gra'))
-                else:
-                    global_velocity = int(js['params']['br'])
+                return redirect(url_for('gra'))
+            else:
+                global_velocity = int(js['params']['br'])
 
-                    return redirect(url_for("gra"))
+                return redirect(url_for("gra"))
 
         except Exception as ex:
             return  redirect(url_for("Menu"))
