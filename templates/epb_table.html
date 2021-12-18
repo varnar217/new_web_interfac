@@ -352,11 +352,11 @@ float:left;
 
 </center>
 
-<button class="open-button" onclick="openForm()">{{punkt_menu[13]}}</button>
+<button id="myForm3" style =" display:block; " class="open-button" onclick="openForm()">{{punkt_menu[13]}}</button>
 </center>
 
 <div class="form-popup" id="myForm">
-  <form   method="POST" action='/eb_ALL/add' class="form-container" >
+  <form id="myForm2"  style =" display:block; " method="POST" action='/eb_ALL/add' class="form-container" >
     <h1>{{punkt_menu[9]}}</h1>
 
     <label for="email"><b>{{punkt_menu[11]}}</b></label>
@@ -387,7 +387,8 @@ float:left;
 
     {%endfor%}
     <br>
-    <input  class="c-button"  type = "submit" value = "{{punkt_menu[13]}}" name="{{punkt_menu[13]}}"  />
+    <button class="c-button" type="submit"  onclick="show_ert()" >{{punkt_menu[13]}}</button>
+    <!--<input  class="c-button"  type = "submit" value = "{{punkt_menu[13]}}" name="{{punkt_menu[13]}}"  />-->
     <button class="c-button" type="button"  onclick="closeForm()">{{punkt_menu[12]}}</button>
   </form>
 </div>
@@ -495,6 +496,17 @@ function show_ert() {
        x3.style.display = "block";
        } else {
       x3.style.display = "none"} ;
+      let x4 = document.getElementById('myForm2');
+          if (x4.style.display == "none"){
+        x4.style.display = "block";
+        } else {
+       x4.style.display = "none"} ;
+
+       let x5 = document.getElementById('myForm3');
+           if (x5.style.display == "none"){
+         x5.style.display = "block";
+         } else {
+        x5.style.display = "none"} ;
 }
 
 

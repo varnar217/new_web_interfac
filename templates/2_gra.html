@@ -399,19 +399,24 @@ padding: 3px;
 
 
      {% if start_flag %}
-        <form   action="/start" method = "POST">
+        <form   style=" display:block;"  action="/start" method = "POST">
 
         <!--<input  class= "myButton22"  style= " margin: 0 auto; background-color: green; color:aliceblue; " type = "submit" onclick="trigger()" (click)="changeButton(button)" value = "{{punkt_menu[0]}}" />-->
         <button id="start45" class= "myButton22"  style=" margin: 0 auto; background-color: green; color:aliceblue; " type = "submit"   onclick="trigger()">{{punkt_menu[0]}}</button>
 
 
         </form>
+        <button id="start46" class= "myButton22"  style=" margin: 0 auto; background-color: green; color:aliceblue; display:none; "   onclick="trigger()">{{punkt_menu[0]}}</button>
+
      {% else %}
-     <form   action="/start" method = "POST">
+     <form    style="  display:block;" action="/start" method = "POST">
        <button id="start45" class= "myButton22"  style=" margin: 0 auto; background-color: red; color:aliceblue; " type = "submit"   onclick="trigger()">{{punkt_menu[1]}}</button>
 
         <!--<input class= "myButton22"  style=" margin: 0 auto; background-color: red; color:aliceblue; " type = "submit" onclick="trigger()" (click)="changeButton(button)" value = "{{punkt_menu[1]}}" />-->
      </form>
+     <button id="start46" class= "myButton22"  style=" margin: 0 auto; background-color: red; color:aliceblue; display:none;"   >{{punkt_menu[1]}}</button>
+
+
      {% endif %}
 
    </div>
@@ -430,6 +435,7 @@ padding: 3px;
        var a = 0;
        function trigger() {
          a++;
+         if (a===1){
          let x = document.getElementById('LIST_EPS');
              if (x.style.display == "none"){
            x.style.display = "block";
@@ -446,12 +452,28 @@ padding: 3px;
               x3.style.display = "block";
               } else {
              x3.style.display = "none"} ;
-             let x4 = document.getElementById('config23');
+
+             let x4 = document.getElementById('MENU_EPS');
                  if (x4.style.display == "none"){
                x4.style.display = "block";
                } else {
               x4.style.display = "none"} ;
 
+         let x5 = document.getElementById('start45');
+             if (x5.style.display == "none"){
+           x5.style.display = "block";
+           } else {
+          x5.style.display = "none"} ;
+
+           };
+
+           let x6 = document.getElementById('start46');
+               if (x6.style.display == "none"){
+             x6.style.display = "block";
+             } else {
+            x6.style.display = "none"} ;
+
+             };
 
            //let x = document.getElementById('back_23');
           // if (x.style.type == "submit"){
@@ -475,10 +497,10 @@ padding: 3px;
 
   <div class="test2"   >
      {% if conect %}
-     <form     method="POST" action='/Menu'>
+     <form  style=   " display:block; "  method="POST" action='/Menu'>
 
 
-    <input  id="config23" class= "myButton22" style= "  float:left; display:block;"  type = "submit" value = "{{punkt_menu[2]}}" />
+    <input id="MENU_EPS" class= "myButton22" style= "  float:left;"  type = "submit" value = "{{punkt_menu[2]}}" />
 
      </form>
      <form style=  "float:left; display:block; " method="POST" action='/LIST_EPS'>

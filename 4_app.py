@@ -773,28 +773,28 @@ def izmen1() :
             #print('json_2=',json_out)
             #req.put
             #print('json_out=',json_out)
-            #if izmen1_flagss==1:
+            if izmen1_flagss==1:
 
-            rr=req.put(f'http://{udras}/params/common',json=(json_out))
+                rr=req.put(f'http://{udras}/params/common',json=(json_out))
 
 
-            bufer_menu_change_MAC_SRC=0
-            #print('rr=',rr.text)
-            buferr=rr.text
+                bufer_menu_change_MAC_SRC=0
+                #print('rr=',rr.text)
+                buferr=rr.text
 
-            js = json.loads(buferr)
-            izmen1_flagss=0
-            #print('\n js=',js)
-            global pcap_cortg
-            mac_flag_error= False
-            if js['response']['code'] == 0 :
-                global_velocity = int(js['params']['br'])
+                js = json.loads(buferr)
+                izmen1_flagss=0
+                #print('\n js=',js)
+                global pcap_cortg
+                mac_flag_error= False
+                if js['response']['code'] == 0 :
+                    global_velocity = int(js['params']['br'])
 
-                return redirect(url_for('gra'))
-            else:
-                global_velocity = int(js['params']['br'])
+                    return redirect(url_for('gra'))
+                else:
+                    global_velocity = int(js['params']['br'])
 
-                return redirect(url_for("gra"))
+                    return redirect(url_for("gra"))
 
         except Exception as ex:
             return  redirect(url_for("Menu"))
@@ -1488,6 +1488,8 @@ def eb_all_add():
         j=0
 
         #if add_eps_buferss==1:
+        json_list=[]
+        #json_list.append(tert)
         for ii in range(1,201) :
 
             if ii not in spisok_eps :
@@ -1509,9 +1511,9 @@ def eb_all_add():
                         vr_summ=vr_summ+pcap_cortg[i-1][1]
                     vrsumm_33=vrsumm_33+vr_summ
 
-                    json_out={
-                    "params":{
-                    "eb": [{
+                    tert={
+                    #"params":{
+                    #"eb": [{
                     "id":ii,
                     "br":int(vr_summ),
                     "user_scenario":{
@@ -1532,20 +1534,21 @@ def eb_all_add():
                     "timedown":network_list[network_numb][2]['timedown']
                     }
                     }
-                    }]
+                    #}]
+                    #}
                     }
-                    }
-                    try :
+                    json_list.append(tert)
+                    #try :
 
-                        rr= req.post(f'http://{udras}/params/eb',json=(json_out))
-                        js = json.loads(rr.text)
-                        add_eps_buferss=0
+                        #rr= req.post(f'http://{udras}/params/eb',json=(json_out))
+                        #js = json.loads(rr.text)
+                        #add_eps_buferss=0
 
-                        error_flag_add_eps=False
+                        #error_flag_add_eps=False
 
 
-                    except Exception as ex:
-                        return  render_template('first.html')
+                    #except Exception as ex:
+                        #return  render_template('first.html')
 
 
                 if network_numb == 0 and scenar_numb != 0:
@@ -1565,9 +1568,9 @@ def eb_all_add():
                         #print(pcap_cortg[i-1])
                         vr_summ=vr_summ+pcap_cortg[i-1][1]
                     vrsumm_33=vrsumm_33+vr_summ
-                    json_out={
-                    "params":{
-                    "eb": [{
+                    tert={
+                    #"params":{
+                    #"eb": [{
                     "id":ii,
                     "br":int(vr_summ),
                     "user_scenario":{
@@ -1586,20 +1589,21 @@ def eb_all_add():
                     "timedown":network_list[network_numb][2]['timedown']
                     }
                     }
-                    }]
+                    #}]
+                    #}
                     }
-                    }
+                    json_list.append(tert)
 
-                    try :
-                        rr=  req.post(f'http://{udras}/params/eb',json=(json_out))
-                        js = json.loads(rr.text)
-                        error_flag_add_eps=False
-                        add_eps_buferss=0
+                    #try :
+                        #rr=  req.post(f'http://{udras}/params/eb',json=(json_out))
+                        #js = json.loads(rr.text)
+                        #error_flag_add_eps=False
+                        #add_eps_buferss=0
 
 
 
-                    except Exception as ex:
-                        return  render_template('first.html')
+                    #except Exception as ex:
+                        #return  render_template('first.html')
 
                 if network_numb != 0 and scenar_numb != 0:
 
@@ -1618,9 +1622,9 @@ def eb_all_add():
                         #print(pcap_cortg[i-1])
                         vr_summ=vr_summ+pcap_cortg[i-1][1]
                     vrsumm_33=vrsumm_33+vr_summ
-                    json_out={
-                    "params":{
-                    "eb": [{
+                    tert={
+                    #"params":{
+                    #"eb": [{
                     "id":ii,
                     "br":int(vr_summ),
                     "user_scenario":{
@@ -1630,18 +1634,19 @@ def eb_all_add():
                     "id": network_list[network_numb][3]
                     }
 
-                    }]
+                    #}]
+                    #}
                     }
-                    }
-                    try :
-                        rr=  req.post(f'http://{udras}/params/eb',json=(json_out))
-                        js = json.loads(rr.text)
-                        error_flag_add_eps=False
-                        add_eps_buferss=0
+                    json_list.append(tert)
+                    #try :
+                        #rr=  req.post(f'http://{udras}/params/eb',json=(json_out))
+                        #js = json.loads(rr.text)
+                        #error_flag_add_eps=False
+                        #add_eps_buferss=0
 
 
-                    except Exception as ex:
-                        return  render_template('first.html')
+                    #except Exception as ex:
+                        #return  render_template('first.html')
 
                 if network_numb != 0 and scenar_numb == 0:
 
@@ -1660,9 +1665,9 @@ def eb_all_add():
                         #print(pcap_cortg[i-1])
                         vr_summ=vr_summ+pcap_cortg[i-1][1]
                     vrsumm_33=vrsumm_33+vr_summ
-                    json_out={
-                    "params":{
-                    "eb": [{
+                    tert={
+                    #"params":{
+                    #"eb": [{
                     "id":ii,
                     "br":int(vr_summ),
                     "user_scenario":{
@@ -1674,34 +1679,60 @@ def eb_all_add():
                     "id": network_list[network_numb][3]
                     }
 
-                    }]
+                    #}]
+                    #}
                     }
-                    }
+                    json_list.append(tert)
 
 
 
 
-                    try :
+                    #try :
 
 
-                        rr=  req.post(f'http://{udras}/params/eb',json=(json_out))
-                        js = json.loads(rr.text)
+                        #rr=  req.post(f'http://{udras}/params/eb',json=(json_out))
+                        #js = json.loads(rr.text)
 
-                        error_flag_add_eps=False
-                        add_eps_buferss=0
+                        #error_flag_add_eps=False
+                        #add_eps_buferss=0
 
-                    except Exception as ex:
-                        return  render_template('first.html')
+                    #except Exception as ex:
+                        #return  render_template('first.html')
             if j == col :
                 break
 
-        if js['response']['code'] == 0 :
+        json_out={
+        "params":{
+        "eb": json_list
+        }
+        }
+        #print('\n json_out=',json_out)
+        try :
+
+            rr= req.post(f'http://{udras}/params/eb',json=(json_out))
+            js = json.loads(rr.text)
             add_eps_buferss=0
 
-            return redirect(url_for('LIST_EPS'))
-        else:
-            add_eps_buferss=0
-            return redirect(url_for('LIST_EPS'))
+            error_flag_add_eps=False
+
+            if js['response']['code'] == 0 :
+                add_eps_buferss=0
+
+                return redirect(url_for('LIST_EPS'))
+            else:
+                add_eps_buferss=0
+                return redirect(url_for('LIST_EPS'))
+
+        except Exception as ex:
+            return  render_template('first.html')
+
+        #if js['response']['code'] == 0 :
+            #add_eps_buferss=0
+
+            #return redirect(url_for('LIST_EPS'))
+        #else:
+            #add_eps_buferss=0
+            #return redirect(url_for('LIST_EPS'))
 
 @app.route('/eb/add', methods=[ 'POST'])
 def eb_add():
@@ -4762,7 +4793,7 @@ def data(number):
                             return response
 
                         return  render_template('first.html')
-        except req.ConnectionError as ex:
+        except Exception as ex:
                 print('\n dert ConnectionError')
 
                 conect=False
