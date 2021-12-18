@@ -1388,6 +1388,10 @@ def eb_all_add():
         js=[]
         global_velocity ,
         vrsumm_33=0
+        print('\n len(eps_br)=',(i))
+
+        if i == 200:
+            return   redirect(url_for('LIST_EPS'))
 
 
 
@@ -3554,41 +3558,52 @@ def start():
 def stopped():
     global conect , allert_msg  , start_flag1 , error_flag , indef_froma ,stopped_msg_mac , stopped_bufer , regim_rabota_mode
 
-    if request.method == 'POST':
-        if regim_rabota_mode == 0:
-            eps_biar_graph = (request.get_data()).decode('utf-8')
-            eps_biar_graph=json.loads(eps_biar_graph)
-            stopped_msg_mac=eps_biar_graph['stopped']['msg']
-            #print('stopped_msg_mac =', stopped_msg_mac)
+    if request.method == 'POST' or request.method == 'GET':
+        #if regim_rabota_mode == 0:
+        print('eps_biar_graph =', request)
+        eps_biar_graph = (request.get_data()).decode('utf-8')
+        print('eps_biar_graph =', eps_biar_graph)
+        eps_biar_graph=json.loads(eps_biar_graph)
+        stopped_msg_mac=eps_biar_graph['stopped']['msg']
+        print('stopped_msg_mac =', stopped_msg_mac)
 
 
 
 
+        #start_flag1=1
+        start_flag1=0
+        #if stopped_msg_mac in 'DPDK: Invalid MAC address of the destination' or stopped_msg_mac in 'DPDK: MAC address of the source is out of the list' or stopped_msg_mac in 'DPDK: Invalid MAC address of the source':
             #start_flag1=1
-            start_flag1=0
-            #if stopped_msg_mac in 'DPDK: Invalid MAC address of the destination' or stopped_msg_mac in 'DPDK: MAC address of the source is out of the list' or stopped_msg_mac in 'DPDK: Invalid MAC address of the source':
-                #start_flag1=1
-            #else:
-                #start_flag1=0
-            #error_flag=True
-            #stopped_msg_mac= stopped_msg_mac
-            stopped_bufer=True
-            #start_flag=False
-            #json_out={}
-            #if start_flag1%2 == 0:
-                #start_flag=True    #False  #bool(5)#"true" #True возможно наборот
-            #else:
-                #start_flag= False# False #bool(0)#"false" #False
-            if indef_froma == 1 :
-                return redirect(url_for("gra"))
-            if indef_froma == 2 :
-                return redirect(url_for("Menu"))
-            if indef_froma == 3 :
-                return redirect(url_for("LIST_EPS"))
-            if indef_froma == 4 :
-                return redirect(url_for("scenar_spis"))
-            if indef_froma == 5 :
-                return redirect(url_for("network_spis"))
+        #else:
+            #start_flag1=0
+        #error_flag=True
+        #stopped_msg_mac= stopped_msg_mac
+        stopped_bufer=True
+        #start_flag=False
+        #json_out={}
+        #if start_flag1%2 == 0:
+            #start_flag=True    #False  #bool(5)#"true" #True возможно наборот
+        #else:
+            #start_flag= False# False #bool(0)#"false" #False
+        if indef_froma == 1 :
+            print('1')
+            return redirect(url_for("gra"))
+        if indef_froma == 2 :
+            print('2')
+
+            return redirect(url_for("Menu"))
+        if indef_froma == 3 :
+            print('3')
+
+            return redirect(url_for("LIST_EPS"))
+        if indef_froma == 4 :
+            print('4')
+
+            return redirect(url_for("scenar_spis"))
+        if indef_froma == 5 :
+            print('5')
+
+            return redirect(url_for("network_spis"))
 
 
 
@@ -4662,6 +4677,7 @@ def data(number):
             start_flag= False# False #bool(0)#"false" #False
         #if data_flagss==1:
         #print('data_flagss=',data_flagss)
+
         try:
 
 
