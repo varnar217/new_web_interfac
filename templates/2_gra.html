@@ -446,6 +446,13 @@ padding: 3px;
               x3.style.display = "block";
               } else {
              x3.style.display = "none"} ;
+             let x4 = document.getElementById('config23');
+                 if (x4.style.display == "none"){
+               x4.style.display = "block";
+               } else {
+              x4.style.display = "none"} ;
+
+
            //let x = document.getElementById('back_23');
           // if (x.style.type == "submit"){
       //   x.style.type = "block";
@@ -471,7 +478,7 @@ padding: 3px;
      <form     method="POST" action='/Menu'>
 
 
-    <input class= "myButton22" style= "  float:left;"  type = "submit" value = "{{punkt_menu[2]}}" />
+    <input  id="config23" class= "myButton22" style= "  float:left; display:block;"  type = "submit" value = "{{punkt_menu[2]}}" />
 
      </form>
      <form style=  "float:left; display:block; " method="POST" action='/LIST_EPS'>
